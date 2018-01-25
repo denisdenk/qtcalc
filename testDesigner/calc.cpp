@@ -6,6 +6,37 @@ Calc::Calc(QWidget *parent) :
     ui(new Ui::Calc)
 {
     ui->setupUi(this);
+
+    connect(ui->clearButton, SIGNAL(released()), this, SLOT(on_clearButton_released()));
+    connect(ui->hexButton, SIGNAL(released()), this, SLOT(on_hexButton_released()));
+    connect(ui->decButton, SIGNAL(released()), this, SLOT(on_decButton_released()));
+    connect(ui->octButton, SIGNAL(released()), this, SLOT(on_octButton_released()));
+    connect(ui->sqrtButton, SIGNAL(released()), this, SLOT(on_sqrtButton_released()));
+    connect(ui->powButton, SIGNAL(released()), this, SLOT(on_powButton_released()));
+    connect(ui->substractButton, SIGNAL(released()), this, SLOT(on_substractButton_released()));
+    connect(ui->plusButton, SIGNAL(released()), this, SLOT(on_plusButton_released()));
+    connect(ui->multiplyButton, SIGNAL(released()), this, SLOT(on_multiplyButton_released()));
+    connect(ui->equallyButton, SIGNAL(released()), this, SLOT(on_equallyButton_released()));
+    connect(ui->divideButton, SIGNAL(released()), this, SLOT(on_divideButton_released()));
+    connect(ui->dotButton, SIGNAL(released()), this, SLOT(on_dotButton_released()));
+    connect(ui->mcButton, SIGNAL(released()), this, SLOT(on_mcButton_released()));
+    connect(ui->mrButton, SIGNAL(released()), this, SLOT(on_mrButton_released()));
+    connect(ui->msButton, SIGNAL(released()), this, SLOT(on_msButton_released()));
+    connect(ui->plusButton, SIGNAL(released()), this, SLOT(on_mrButton_released()));
+    connect(ui->zeroButton, SIGNAL(released()), this, SLOT(on_zeroButton_released()));
+    connect(ui->oneButton, SIGNAL(released()), this, SLOT(on_oneButton_released()));
+    connect(ui->twoButton, SIGNAL(released()), this, SLOT(on_twoButton_released()));
+    connect(ui->threeButton, SIGNAL(released()), this, SLOT(on_threeButton_released()));
+    connect(ui->fourButton, SIGNAL(released()), this, SLOT(on_fourButton_released()));
+    connect(ui->fiveButton, SIGNAL(released()), this, SLOT(on_fiveButton_released()));
+    connect(ui->sixButton, SIGNAL(released()), this, SLOT(on_sixButton_released()));
+    connect(ui->sevenButton, SIGNAL(released()), this, SLOT(on_sevenButton_released()));
+    connect(ui->eightButton, SIGNAL(released()), this, SLOT(on_eightButton_released()));
+    connect(ui->nineButton, SIGNAL(released()), this, SLOT(on_nineButton_released()));
+
+
+
+
 }
 
 Calc::~Calc()
@@ -15,7 +46,7 @@ Calc::~Calc()
 
 void Calc::on_clearButton_released()
 {
-
+    ui->textBrowser->setText("Clear!");
 }
 
 void Calc::on_hexButton_released()
