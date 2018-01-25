@@ -1,6 +1,10 @@
 #include "calc.h"
 #include "ui_calc.h"
 
+QString value = "", total = "";
+int fNum, sNum;
+int plusBool = false, substractBool = false, multiplyBool = false, divideBool = false;
+
 Calc::Calc(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Calc)
@@ -39,137 +43,150 @@ Calc::Calc(QWidget *parent) :
 
 }
 
-Calc::~Calc()
-{
+Calc::~Calc(){
     delete ui;
 }
 
-void Calc::on_clearButton_released()
-{
-    ui->textBrowser->setText("Clear!");
+void Calc::on_clearButton_released(){
+    value = "";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_hexButton_released()
-{
-
-}
-
-void Calc::on_decButton_released()
-{
+void Calc::on_hexButton_released(){
 
 }
 
-void Calc::on_octButton_released()
-{
+void Calc::on_decButton_released(){
 
 }
 
-void Calc::on_sqrtButton_released()
-{
+void Calc::on_octButton_released(){
 
 }
 
-void Calc::on_powButton_released()
-{
+void Calc::on_sqrtButton_released(){
 
 }
 
-void Calc::on_substractButton_released()
-{
+void Calc::on_powButton_released(){
 
 }
 
-void Calc::on_plusButton_released()
-{
+void Calc::on_substractButton_released(){
+    fNum = value.toInt();
+    value = "";
+    ui->textBrowser->setText(value);
+    substractBool = true;
+}
+
+void Calc::on_plusButton_released(){
+    fNum = value.toInt();
+    value = "";
+    ui->textBrowser->setText(value);
+    plusBool = true;
+}
+
+void Calc::on_multiplyButton_released(){
+    fNum = value.toInt();
+    value = "";
+    ui->textBrowser->setText(value);
+    multiplyBool = true;
+}
+
+void Calc::on_equallyButton_released(){
+    sNum = value.toInt();
+
+    if (plusBool){
+        total = QString::number((fNum + sNum));
+        ui->textBrowser->setText(value);
+    }
+    if (substractBool){
+        total = QString::number((fNum - sNum));
+        ui->textBrowser->setText(value);
+    }
+    if (multiplyBool){
+        total = QString::number((fNum * sNum));
+        ui->textBrowser->setText(value);
+    }
+    if (divideBool){
+        total = QString::number((fNum / sNum));
+        ui->textBrowser->setText(value);
+    }
+}
+
+void Calc::on_divideButton_released(){
+    fNum = value.toInt();
+    value = "";
+    ui->textBrowser->setText(value);
+    divideBool = true;
+}
+
+void Calc::on_dotButton_released(){
 
 }
 
-void Calc::on_multiplyButton_released()
-{
+void Calc::on_mcButton_released(){
 
 }
 
-void Calc::on_equallyButton_released()
-{
+void Calc::on_mrButton_released(){
 
 }
 
-void Calc::on_divideButton_released()
-{
+void Calc::on_msButton_released(){
 
 }
 
-void Calc::on_dotButton_released()
-{
+void Calc::on_mplusButton_released(){
 
 }
 
-void Calc::on_mcButton_released()
-{
-
+void Calc::on_zeroButton_released(){
+    value = value + "0";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_mrButton_released()
-{
-
+void Calc::on_oneButton_released(){
+    value = value + "1";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_msButton_released()
-{
-
+void Calc::on_twoButton_released(){
+    value = value + "2";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_mplusButton_released()
-{
-
+void Calc::on_threeButton_released(){
+    value = value + "3";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_zeroButton_released()
-{
-
+void Calc::on_fourButton_released(){
+    value = value + "4";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_oneButton_released()
-{
-
+void Calc::on_fiveButton_released(){
+    value = value + "5";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_twoButton_released()
-{
-
+void Calc::on_sixButton_released(){
+    value = value + "6";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_threeButton_released()
-{
-
+void Calc::on_sevenButton_released(){
+    value = value + "7";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_fourButton_released()
-{
-
+void Calc::on_eightButton_released(){
+    value = value + "8";
+    ui->textBrowser->setText(value);
 }
 
-void Calc::on_fiveButton_released()
-{
-
-}
-
-void Calc::on_sixButton_released()
-{
-
-}
-
-void Calc::on_sevenButton_released()
-{
-
-}
-
-void Calc::on_eightButton_released()
-{
-
-}
-
-void Calc::on_nineButton_released()
-{
-
+void Calc::on_nineButton_released(){
+    value = value + "9";
+    ui->textBrowser->setText(value);
 }
