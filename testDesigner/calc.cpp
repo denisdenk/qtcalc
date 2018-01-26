@@ -1,6 +1,8 @@
 #include "calc.h"
 #include "ui_calc.h"
 #include "math.h"
+#include "stdlib.h"
+#include "stdio.h"
 
 double fNum;
 bool secondNumber = false;
@@ -30,8 +32,6 @@ Calc::Calc(QWidget *parent) :
     ui->substractButton->setCheckable(true);
     ui->multiplyButton->setCheckable(true);
     ui->divideButton->setCheckable(true);
-//    ui->sqrtButton->setCheckable(true);
-//    ui->powButton->setCheckable(true);
 }
 
 Calc::~Calc(){
@@ -119,7 +119,6 @@ void Calc::on_powButton_released()
     fNum = ui->label->text().toDouble();
     fNum = pow(fNum, 2);
     ui->label->setText(QString::number(fNum, 'g', 15));
-    ui->powButton->setChecked(false);
 }
 
 // Square root
@@ -128,5 +127,13 @@ void Calc::on_sqrtButton_released()
     fNum = ui->label->text().toDouble();
     fNum = sqrt(fNum);
     ui->label->setText(QString::number(fNum, 'g', 15));
-    ui->powButton->setChecked(false);
+}
+
+// Convert to HEX
+void Calc::on_hexButton_released()
+{
+    fNum = ui->label->text().toDouble();
+
+    QString hex = QString("0x%1").arg(ui->label->text().toInt(), -1, 16, QLatin1Char('O'));
+    ui->label->setText(hex);
 }
