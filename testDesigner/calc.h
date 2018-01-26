@@ -29,6 +29,8 @@ private slots:
 
     void on_hexButton_released();
 
+    void on_octButton_released();
+
 private:
     Ui::Calc *ui;
 

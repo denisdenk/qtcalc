@@ -43,7 +43,7 @@ void Calc::digitButtonPressed(){
     QPushButton *button = (QPushButton*)sender();
     double Number = (ui->label->text() + button->text()).toDouble();
 
-    // Chick if number already entered
+    // Check if number already entered
     if(ui->plusButton->isChecked() || ui->substractButton->isChecked() ||
             ui->multiplyButton->isChecked() || ui->divideButton->isChecked() && (!secondNumber)){
         Number = button->text().toDouble();
@@ -136,4 +136,13 @@ void Calc::on_hexButton_released()
 
     QString hex = QString("0x%1").arg(ui->label->text().toInt(), -1, 16, QLatin1Char('O'));
     ui->label->setText(hex);
+}
+
+// Convert to OCT
+void Calc::on_octButton_released()
+{
+    fNum = ui->label->text().toDouble();
+
+    QString oct = QString("%1").arg(ui->label->text().toInt(), -1, 8, QLatin1Char('O'));
+    ui->label->setText(oct);
 }
