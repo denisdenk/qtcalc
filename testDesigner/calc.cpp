@@ -4,8 +4,9 @@
 #include "stdlib.h"
 #include "stdio.h"
 
-double fNum;
-bool secondNumber = false;
+double fNum;                //First number
+bool secondNumber = false;  // Flag of second number is entered
+double sumInMemory;         // Values stored in memory (for mc, m+, ...)
 
 Calc::Calc(QWidget *parent) :
     QDialog(parent),
@@ -150,4 +151,33 @@ void Calc::on_octButton_released(){
 
     QString oct = QString("%1").arg(ui->label->text().toInt(), -1, 8, QLatin1Char('O'));
     ui->label->setText(oct);
+}
+
+
+/*
+ * Memory operations
+ */
+
+// Memory clean
+void Calc::on_mcButton_released()
+{
+    sumInMemory = 0.0;
+}
+
+// Memory read
+void Calc::on_mrButton_released()
+{
+    ui->label->setText(QString::number(sumInMemory));
+}
+
+// Memory safe
+void Calc::on_msButton_released()
+{
+    sumInMemory = ui->label->text().toDouble();
+}
+
+// Add to memory
+void Calc::on_mplusButton_released()
+{
+    sumInMemory += ui->label->text().toDouble();
 }

@@ -28,6 +28,10 @@ private slots:
     void on_sqrtButton_released();
     void on_hexButton_released();
     void on_octButton_released();
+    void on_mcButton_released();
+    void on_mrButton_released();
+    void on_msButton_released();
+    void on_mplusButton_released();
 
 private:
     Ui::Calc *ui;
