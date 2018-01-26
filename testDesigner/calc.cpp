@@ -13,6 +13,7 @@ Calc::Calc(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connect(ui->zeroButton, SIGNAL(released()), this, SLOT(digitButtonPressed()));
     connect(ui->oneButton, SIGNAL(released()), this, SLOT(digitButtonPressed()));
     connect(ui->twoButton, SIGNAL(released()), this, SLOT(digitButtonPressed()));
     connect(ui->threeButton, SIGNAL(released()), this, SLOT(digitButtonPressed()));
@@ -42,18 +43,25 @@ Calc::~Calc(){
 void Calc::digitButtonPressed(){
     QPushButton *button = (QPushButton*)sender();
     double Number = (ui->label->text() + button->text()).toDouble();
+    QString newLabel;
 
     // Check if number already entered
     if(ui->plusButton->isChecked() || ui->substractButton->isChecked() ||
             ui->multiplyButton->isChecked() || ui->divideButton->isChecked() && (!secondNumber)){
         Number = button->text().toDouble();
         secondNumber = true;
+        newLabel = QString::number(Number, 'g', 15);
     }
     else {
-        Number = (ui->label->text() + button->text()).toDouble();
+        if(ui->label->text().contains('.') && button->text() =='0'){
+            newLabel = ui->label->text() + button->text();
+        }
+        else {
+            Number = (ui->label->text() + button->text()).toDouble();
+            newLabel = QString::number(Number, 'g', 15);
+        }
     }
-
-    ui->label->setText(QString::number(Number, 'g', 15));
+    ui->label->setText(newLabel);
 }
 
 // Check the dot button
@@ -114,8 +122,7 @@ void Calc::on_clearButton_released(){
 }
 
 // Power on 2
-void Calc::on_powButton_released()
-{
+void Calc::on_powButton_released(){
     fNum = ui->label->text().toDouble();
     fNum = pow(fNum, 2);
     ui->label->setText(QString::number(fNum, 'g', 15));
@@ -130,8 +137,7 @@ void Calc::on_sqrtButton_released()
 }
 
 // Convert to HEX
-void Calc::on_hexButton_released()
-{
+void Calc::on_hexButton_released(){
     fNum = ui->label->text().toDouble();
 
     QString hex = QString("0x%1").arg(ui->label->text().toInt(), -1, 16, QLatin1Char('O'));
@@ -139,8 +145,7 @@ void Calc::on_hexButton_released()
 }
 
 // Convert to OCT
-void Calc::on_octButton_released()
-{
+void Calc::on_octButton_released(){
     fNum = ui->label->text().toDouble();
 
     QString oct = QString("%1").arg(ui->label->text().toInt(), -1, 8, QLatin1Char('O'));

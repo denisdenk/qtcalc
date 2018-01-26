@@ -26,9 +26,7 @@ private slots:
     void on_clearButton_released();
     void on_powButton_released();
     void on_sqrtButton_released();
-
     void on_hexButton_released();
-
     void on_octButton_released();
 
 private:
