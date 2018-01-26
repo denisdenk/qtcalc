@@ -2,6 +2,7 @@
 #include "ui_calc.h"
 
 double fNum;
+bool secondNumber = false;
 
 Calc::Calc(QWidget *parent) :
     QDialog(parent),
@@ -42,8 +43,9 @@ void Calc::digitButtonPressed(){
 
     // Chick if number already entered
     if(ui->plusButton->isChecked() || ui->substractButton->isChecked() ||
-            ui->multiplyButton->isChecked() || ui->divideButton->isChecked()){
+            ui->multiplyButton->isChecked() || ui->divideButton->isChecked() && (!secondNumber)){
         Number = button->text().toDouble();
+        secondNumber = true;
     }
     else {
         Number = (ui->label->text() + button->text()).toDouble();
@@ -94,4 +96,18 @@ void Calc::on_equallyButton_released()
         ui->label->setText(QString::number(Number, 'g', 15));
         ui->divideButton->setChecked(false);
     }
+
+    secondNumber = false;
+}
+
+// Clear all display
+void Calc::on_clearButton_released(){
+    ui->plusButton->setChecked(false);
+    ui->substractButton->setChecked(false);
+    ui->multiplyButton->setChecked(false);
+    ui->divideButton->setChecked(false);
+
+    secondNumber = false;
+
+    ui->label->setText("0");
 }

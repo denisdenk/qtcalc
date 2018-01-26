@@ -26,6 +26,8 @@ private slots:
 
     void on_equallyButton_released();
 
+    void on_clearButton_released();
+
 private:
     Ui::Calc *ui;
 
