@@ -22,11 +22,10 @@ private slots:
     void digitButtonPressed();
     void on_dotButton_released();
     void binaryOperationPressed();
-
-
     void on_equallyButton_released();
-
     void on_clearButton_released();
+    void on_powButton_released();
+    void on_sqrtButton_released();
 
 private:
     Ui::Calc *ui;

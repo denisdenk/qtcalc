@@ -1,5 +1,6 @@
 #include "calc.h"
 #include "ui_calc.h"
+#include "math.h"
 
 double fNum;
 bool secondNumber = false;
@@ -29,7 +30,8 @@ Calc::Calc(QWidget *parent) :
     ui->substractButton->setCheckable(true);
     ui->multiplyButton->setCheckable(true);
     ui->divideButton->setCheckable(true);
-
+//    ui->sqrtButton->setCheckable(true);
+//    ui->powButton->setCheckable(true);
 }
 
 Calc::~Calc(){
@@ -96,7 +98,6 @@ void Calc::on_equallyButton_released()
         ui->label->setText(QString::number(Number, 'g', 15));
         ui->divideButton->setChecked(false);
     }
-
     secondNumber = false;
 }
 
@@ -110,4 +111,22 @@ void Calc::on_clearButton_released(){
     secondNumber = false;
 
     ui->label->setText("0");
+}
+
+// Power on 2
+void Calc::on_powButton_released()
+{
+    fNum = ui->label->text().toDouble();
+    fNum = pow(fNum, 2);
+    ui->label->setText(QString::number(fNum, 'g', 15));
+    ui->powButton->setChecked(false);
+}
+
+// Square root
+void Calc::on_sqrtButton_released()
+{
+    fNum = ui->label->text().toDouble();
+    fNum = sqrt(fNum);
+    ui->label->setText(QString::number(fNum, 'g', 15));
+    ui->powButton->setChecked(false);
 }
