@@ -35,6 +35,9 @@ private slots:
 
 private:
     Ui::Calc *ui;
+    double fNum = 0;                //First number
+    double sumInMemory = 0;         // Values stored in memory (for mc, m+, ...)
+    bool secondNumber = false;  // Flag of second number is entered
 
 };
 

@@ -4,10 +4,6 @@
 #include "stdlib.h"
 #include "stdio.h"
 
-double fNum;                //First number
-bool secondNumber = false;  // Flag of second number is entered
-double sumInMemory;         // Values stored in memory (for mc, m+, ...)
-
 Calc::Calc(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Calc)
@@ -162,6 +158,7 @@ void Calc::on_octButton_released(){
 void Calc::on_mcButton_released()
 {
     sumInMemory = 0.0;
+    ui->label->setText(QString::number(sumInMemory));
 }
 
 // Memory read
